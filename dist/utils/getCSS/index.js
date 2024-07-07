@@ -144,7 +144,29 @@ var getMultiShadowCSS = exports.getMultiShadowCSS = function getMultiShadowCSS(v
 };
 
 //background
-var getBackgroundCSS = exports.getBackgroundCSS = function getBackgroundCSS(background) {
+var getBackgroundCSS = exports.getBackgroundCSS = function getBackgroundCSS(background, selector) {
+  var normal = background.normal,
+    hover = background.hover;
+  var type = normal.type,
+    color = normal.color,
+    gradient = normal.gradient,
+    img = normal.img;
+  var hoverType = hover.type,
+    hoverColor = hover.color,
+    hoverGradient = hover.gradient,
+    hoverImg = hover.img,
+    transition = hover.transition;
+  var bg = type === "color" ? getColor(color) : type === "gradient" ? getGradientCSS(gradient) : type === "image" ? getImageCSS(img).global : "";
+  var hoverBg = hoverType === "color" ? getColor(hoverColor) : hover.type === "gradient" ? getGradientCSS(hoverGradient) : hover.type === "image" ? getImageCSS(hoverImg).global : "";
+  var desktop = type === "image" ? getImageCSS(img).desktop : "";
+  var tablet = type === "image" ? getImageCSS(img).tablet : "";
+  var mobile = type === "image" ? getImageCSS(img).mobile : "";
+  var hoverDesktop = hoverType === "image" ? getImageCSS(hover.img).desktop : "";
+  var hoverTablet = hoverType === "image" ? getImageCSS(hover.img).tablet : "";
+  var hoverMobile = hoverType === "image" ? getImageCSS(hover.img).mobile : "";
+  return "".concat(selector, "{\n    ").concat(bg, "\n    ").concat(desktop, "\n    ").concat(transition ? "transition:all ".concat(transition, "s;") : "", "\n  }\n\n  ").concat(selector, ":hover{\n    ").concat(hoverBg, "\n    ").concat(hoverDesktop, "\n  }\n\n  @media only screen and (min-width:641px) and (max-width: 1024px) {\n      ").concat(selector, "{\n    ").concat(tablet, "\n  }\n  ").concat(selector, ":hover{\n    ").concat(hoverTablet, "\n  }\n  }\n  @media only screen and (max-width: 640px) {\n  ").concat(selector, "{\n    ").concat(mobile, "\n  }\n  ").concat(selector, ":hover{\n    ").concat(hoverMobile, "\n  }\n  }").replace(/\s+/g, " ").trim();
+};
+var getOverlayBGCSS = function getOverlayBGCSS(background) {
   var normal = background.normal,
     hover = background.hover;
   var type = normal.type,
@@ -195,7 +217,7 @@ var getOverlayCSS = exports.getOverlayCSS = function getOverlayCSS(overlay, sele
   // -webkit - filter: brightness(${ brightness } %) contrast(${ contrast } %) saturate(${ saturation } %) blur(${ blur }px) hue - rotate(${ hue }deg);
   var blendCss = blend ? "mix-blend-mode: ".concat(blend, ";") : "";
   var transition = transition ? "transition:all ".concat(transition, "s;") : "";
-  return isEnabled ? "".concat(selector, "::after{\n    content:\"\";\n    position:absolute;\n    inset:0;\n    ").concat(getBackgroundCSS(colors).normal.background, "\n    ").concat(getBackgroundCSS(colors).normal.desktop, "\n    opacity:").concat(opacity, ";\n    ").concat(blendCss, "\n    ").concat(filter, "\n    ").concat(transition, "\n  }\n\n  ").concat(selector, ":hover::after{\n    content:\"\";\n    position:absolute;\n    inset:0;\n    ").concat(getBackgroundCSS(colors).hover.background, "\n    ").concat(getBackgroundCSS(colors).hover.desktop, "\n  }\n\n  @media only screen and (min-width:641px) and (max-width: 1024px) {\n      ").concat(selector, "::after{\n    ").concat(getBackgroundCSS(colors).normal.tablet, "\n  }\n  ").concat(selector, ":hover::after{\n    ").concat(getBackgroundCSS(colors).hover.tablet, "\n  }\n  }\n\n  @media only screen and (max-width: 640px) {\n  ").concat(selector, "::after{\n    ").concat(getBackgroundCSS(colors).normal.mobile, "\n  }\n  ").concat(selector, ":hover::after{\n    ").concat(getBackgroundCSS(colors).hover.mobile, "\n  }\n  }").replace(/\s+/g, " ").trim() : "";
+  return isEnabled ? "".concat(selector, "::after{\n    content:\"\";\n    position:absolute;\n    inset:0;\n    ").concat(getOverlayBGCSS(colors).normal.background, "\n    ").concat(getOverlayBGCSS(colors).normal.desktop, "\n    opacity:").concat(opacity, ";\n    ").concat(blendCss, "\n    ").concat(filter, "\n    ").concat(transition, "\n  }\n\n  ").concat(selector, ":hover::after{\n    content:\"\";\n    position:absolute;\n    inset:0;\n    ").concat(getOverlayBGCSS(colors).hover.background, "\n    ").concat(getOverlayBGCSS(colors).hover.desktop, "\n  }\n\n  @media only screen and (min-width:641px) and (max-width: 1024px) {\n      ").concat(selector, "::after{\n    ").concat(getOverlayBGCSS(colors).normal.tablet, "\n  }\n  ").concat(selector, ":hover::after{\n    ").concat(getOverlayBGCSS(colors).hover.tablet, "\n  }\n  }\n\n  @media only screen and (max-width: 640px) {\n  ").concat(selector, "::after{\n    ").concat(getOverlayBGCSS(colors).normal.mobile, "\n  }\n  ").concat(selector, ":hover::after{\n    ").concat(getOverlayBGCSS(colors).hover.mobile, "\n  }\n  }").replace(/\s+/g, " ").trim() : "";
 
   // return {
   //   normal: {

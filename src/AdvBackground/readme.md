@@ -91,37 +91,10 @@ import { getCss } from 'bpl-gutenberg-panel';
 const { getBackgroundCSS } =getCss;
 
 const { background } = attributes;
+const selector =".background"
 
 <style>{`
-  .background{
-    ${getBackgroundCSS(background).normal.background}
-    ${getBackgroundCSS(background).normal.desktop}
-    transition:all ${getBackgroundCSS(background).transition}s ease-in-out;
-  }
-  .background:hover{
-    ${getBackgroundCSS(background).hover.background}
-    ${getBackgroundCSS(background).hover.desktop}
-  }
-
-  //tablet device
-  @media only screen and (min-width:641px) and (max-width: 1024px){
-      .background{
-    ${getBackgroundCSS(background).normal.tablet}
-  }
-  .background:hover{
-    ${getBackgroundCSS(background).hover.tablet}
-  }
-  }
-
-  //mobile device
-  @media only screen and (max-width: 640px){
-  .background{
-    ${getBackgroundCSS(background).normal.mobile}
-  }
-  .background:hover{
-    ${getBackgroundCSS(background).hover.mobile}
-  }
-  }
+  ${getBackgroundCSS(background,selector)}
 `}</style>
 ```
 

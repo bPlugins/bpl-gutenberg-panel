@@ -1,12 +1,13 @@
 {
   "name": "bpl-gutenberg-panel",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
-  "repository": "https://github.com/muradwahid/bpl-gutenberg-panel.git",
+  "repository": "https://github.com/bPlugins/bpl-gutenberg-panel",
   "keywords": [
     "gutenberg-panel",
     "gutenberg",
-    "panel"
+    "panel",
+    "bPlugins"
   ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
