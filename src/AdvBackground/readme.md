@@ -3,7 +3,7 @@
 AdvBackground is used to set element background(background color,gradient, background image).
 
 ## Screenshots
-<span style="display:flex;gap:5px;align-items:flex-start;flex-wrap:wrap">![Background Color](../../assets/images/advBackground1.png)
+<span style="display:flex;gap:'5px'; align-items:'flex-start';flex-wrap:wrap">![Background Color](../../assets/images/advBackground1.png)
 ![Background Color](../../assets/images/advBackground2.png)
 ![Background Color](../../assets/images/advBackground3.png)</span>
 
