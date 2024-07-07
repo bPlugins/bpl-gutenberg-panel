@@ -1,0 +1,44 @@
+{
+  "name": "bpl-gutenberg-panel",
+  "version": "0.1.1",
+  "description": "",
+  "repository": "https://github.com/muradwahid/bpl-gutenberg-panel.git",
+  "keywords": [
+    "gutenberg-panel",
+    "gutenberg",
+    "panel"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx babel src --out-dir dist --source-maps --copy-files"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.8",
+    "@babel/preset-react": "^7.23.3",
+    "@eslint/compat": "^1.0.3",
+    "@eslint/js": "^9.4.0",
+    "@wordpress/block-editor": "^12.17.0",
+    "@wordpress/blocks": "^12.26.0",
+    "@wordpress/components": "^25.15.0"
+  },
+  "dependencies": {
+    "@tinymce/tinymce-react": "^4.3.2",
+    "immer": "^10.1.1",
+    "react-ace": "^11.0.1",
+    "react-sortablejs": "^6.1.4",
+    "sortablejs": "^1.15.2"
+  },
+  "peerDependencies": {
+    "@tinymce/tinymce-react": ">=4.3.2",
+    "immer": ">=10.1.1",
+    "react-ace": ">=11.0.1",
+    "react-sortablejs": ">=6.1.4",
+    "sortablejs": ">=1.15.2"
+  }
+}
