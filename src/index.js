@@ -25,21 +25,11 @@ import { TabPanel } from './TabPanel/TabPanel';
 
 import './style.scss'
 import { updateData } from './utils/helper/helper';
-import { getBackgroundCSS, getBorderCSS, getBoxCSS, getGradientCSS, getOverlayCSS, getSingleShadowCSS,getMultiShadowCSS } from './utils/getCSS';
-
 export { AdvBackground, AdvOverlay, BBoxControl, BButtonGroup, BGradient, BMultiShadowControl, BorderControl, BUnitControl, CustomCodeEditor, Device, DynamicTag, Label, MediaArea, PanelAlign, PanelColorControl, PanelColorPicker, PanelGradientPicker, PanelRepeater, PanelSingleShadow, RangeUnitControl, SortableProvider, Tab, TabPanel, DualColorControl };
 
 // export * as getCss from "./utils/getCss/getCss"
 // export * as helper from "./utils/helper/helper"
-export const getCss = {
-  getBoxCSS,
-  getGradientCSS,
-  getBorderCSS,
-  getSingleShadowCSS,
-  getMultiShadowCSS,
-  getBackgroundCSS,
-  getOverlayCSS
-}
+
 export const helper = {
   updateData
 }

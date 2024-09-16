@@ -2,15 +2,15 @@
   "name": "bpl-gutenberg-panel",
   "version": "0.1.2",
   "description": "",
-  "repository": "https://github.com/bPlugins/bpl-gutenberg-panel",
+  "repository": "https://github.com/muradwahid/bpl-gutenberg-panel.git",
   "keywords": [
     "gutenberg-panel",
     "gutenberg",
     "panel",
     "bPlugins"
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": ["dist/index.js","dist/getCSS.js"],
+  "types":[ "dist/index.d.ts","dist/getCSS.d.ts"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx babel src --out-dir dist --source-maps --copy-files"

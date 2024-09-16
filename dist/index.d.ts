@@ -306,15 +306,6 @@ export {
 // declare const getSingleShadowCSS: (shadow: any) => string;
 // declare const getMultiShadowCSS: (value:any,type:string) => string;
 
-export const getCss: {
-  getBoxCSS: (value: object, property: string) => string;
-  getGradientCSS: (gradient: any) => string;
-  getBackgroundCSS: (background: any) => string;
-  getOverlayCSS: (overlay: any) => string;
-  getBorderCSS: (border: any) => string;
-  getSingleShadowCSS: (shadow: any) => string;
-  getMultiShadowCSS: (value: any, type: string) => string;
-};
 // declare const updateData: () => any;
 
 export const helper: {

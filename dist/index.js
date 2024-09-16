@@ -147,7 +147,7 @@ Object.defineProperty(exports, "TabPanel", {
     return _TabPanel.TabPanel;
   }
 });
-exports.helper = exports.getCss = void 0;
+exports.helper = void 0;
 var _AdvBackground = require("./AdvBackground/AdvBackground");
 var _AdvOverlay = require("./AdvOverlay/AdvOverlay");
 var _BBoxControl = require("./BBoxControl/BBoxControl");
@@ -174,18 +174,9 @@ var _Tab = require("./Tab/Tab");
 var _TabPanel = require("./TabPanel/TabPanel");
 require("./style.scss");
 var _helper = require("./utils/helper/helper");
-var _getCSS = require("./utils/getCSS");
 // export * as getCss from "./utils/getCss/getCss"
 // export * as helper from "./utils/helper/helper"
-var getCss = exports.getCss = {
-  getBoxCSS: _getCSS.getBoxCSS,
-  getGradientCSS: _getCSS.getGradientCSS,
-  getBorderCSS: _getCSS.getBorderCSS,
-  getSingleShadowCSS: _getCSS.getSingleShadowCSS,
-  getMultiShadowCSS: _getCSS.getMultiShadowCSS,
-  getBackgroundCSS: _getCSS.getBackgroundCSS,
-  getOverlayCSS: _getCSS.getOverlayCSS
-};
+
 var helper = exports.helper = {
   updateData: _helper.updateData
 };

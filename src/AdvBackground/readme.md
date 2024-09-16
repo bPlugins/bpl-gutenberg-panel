@@ -91,7 +91,6 @@ import { getCss } from 'bpl-gutenberg-panel';
 const { getBackgroundCSS } =getCss;
 
 const { background } = attributes;
-const selector =".background"
 
 <style>{`
   ${getBackgroundCSS(background,selector)}
