@@ -9,8 +9,14 @@
     "panel",
     "bPlugins"
   ],
-  "main": ["dist/index.js","dist/getCSS.js"],
-  "types":[ "dist/index.d.ts","dist/getCSS.d.ts"],
+  "main": [
+    "dist/index.js",
+    "dist/getCSS.js"
+  ],
+  "types": [
+    "dist/index.d.ts",
+    "dist/getCSS.d.ts"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx babel src --out-dir dist --source-maps --copy-files"
@@ -29,14 +35,12 @@
     "@wordpress/components": "^25.15.0"
   },
   "dependencies": {
-    "@tinymce/tinymce-react": "^4.3.2",
-    "immer": "^10.1.1",
-    "react-ace": "^11.0.1",
-    "react-sortablejs": "^6.1.4",
-    "sortablejs": "^1.15.2"
+    "immer": ">=10.1.1",
+    "react-ace": ">=11.0.1",
+    "react-sortablejs": ">=6.1.4",
+    "sortablejs": ">=1.15.2"
   },
   "peerDependencies": {
-    "@tinymce/tinymce-react": ">=4.3.2",
     "immer": ">=10.1.1",
     "react-ace": ">=11.0.1",
     "react-sortablejs": ">=6.1.4",

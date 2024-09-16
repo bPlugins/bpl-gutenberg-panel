@@ -1,92 +1,63 @@
-/* eslint-disable no-unused-vars */
-import { Editor } from '@tinymce/tinymce-react';
-import { useEffect, useRef, useState } from 'react';
-import "./tinyEditor.css";
-import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-const { Button } = wp.components;
+import React, { useEffect, useState } from 'react';
 
-/**
- * TinyEditor component.
- *
- * @component
- * @param {Object} props
- * @param {String} [props.value]
- * @param {Function} [props.onChange=() => {}]
- * @param {Number} [props.height=180] - Optional
- * @returns {JSX.Element}
- */
+export const TinyEditor = ({ value = '', onChange, defaultValue = '', media_button = true, quicktags = true, height = '180px', isLoading }) => {
+  const def = value || defaultValue;
 
-export const TinyEditor = (props) => {
-  const { value, onChange = () => { }, height = 180, default: defaults } = props;
-  const editorRef = useRef(null);
-  const tinyRef = useRef(null);
-  const [media, setMedia] = useState('');
-  const [content, setContent] = useState('');
-  const [initialValue, setInitialValue] = useState(
-    value || defaults || 'This is the initial content of the editor'
-  );
-  const log = () => {
-    if (editorRef.current) {
-      setContent(editorRef.current.getContent());
-    }
-  };
-  useEffect(() => {
-    // const iframe = document?.querySelector('iframe');
-    const iframeContent =
-      tinyRef.current?.contentDocument || tinyRef.current?.contentWindow?.document;
-    const tinymce = iframeContent?.querySelector('.mce-content-body');
-    const createImgEl = document.createElement('img');
-    createImgEl.src = media.url;
-    createImgEl.style.maxWidth = '100%';
-    createImgEl.style.maxHeight = '100%';
-    tinymce?.appendChild(createImgEl);
-  }, [media.url]);
+  const [randomId, seTEditorId] = useState(null);
 
   useEffect(() => {
-    onChange(content);
-  }, [content]);
-
-  useEffect(() => {
-    setContent(value);
+    seTEditorId(String(Math.floor(Math.random() * 99999)));
   }, []);
+  useEffect(() => {
+    const editorSettings = {
+      tinymce: {
+        selector: `bpl-wp-${randomId}editor`,
+        height,
+        wpautop: false,
+        plugins: 'charmap colorpicker compat3x directionality fullscreen hr image lists media paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink wptextpattern wpview',
+        toolbar1: 'formatselect bold italic underline bullist numlist blockquote alignleft aligncenter alignright link unlink wp_more fullscreen wp_adv',
+        toolbar2: 'strikethrough hr alignjustify forecolor pastetext removeformat charmap outdent indent undo redo wp_help'
+      },
+
+      quicktags,
+      mediaButtons: media_button,
+      paste_block_drop: true,
+      paste_data_images: true,
+      paste_as_text: true,
+      content_style:
+        "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+    }
+    if (randomId) {
+      wp.editor.initialize(`bpl-wp-${randomId}editor`, editorSettings); 
+    }
+  }, [randomId])
+
+  const editor = window.tinymce.editors[`bpl-wp-${randomId}editor`];
+  if (editor) {
+    editor.on('keyup', () => {
+      const content = editor?.getContent();
+      onChange(content)
+
+    });
+  }
+  React.useEffect(() => {
+    if (editor) {
+      editor.setContent(def);
+    }
+  }, [isLoading])
   return (
     <div>
-      <MediaUploadCheck>
-        <MediaUpload
-          gallery={true}
-          onSelect={(value) => setMedia(value)}
-          allowedTypes={['image/svg+xml']}
-          render={({ open }) => (
-            <button className="custom-tinymce-button" onClick={open}>
-              <span className="dashicons dashicons-admin-media"></span>
-              Add Media
-            </button>
-          )}
-          multiple={false}
-        />
-      </MediaUploadCheck>
-      <Editor
-        ref={tinyRef}
-        apiKey="d1lxc40qcx6ad71i4bn1ih4d8l8oalalg9efymoc5l3ay9qo"
-        onChange={(evt, editor) => setContent(editor.getContent())}
-        onInit={(evt, editor) => (editorRef.current = editor)}
-        initialValue={initialValue}
-        init={{
-          height,
-          selector: 'textarea',
-          menubar: false,
-          plugins: ['lists link image charmap', 'fullscreen', 'media paste'],
-          toolbar:
-            'undo redo formatselect bold italic link alignleft aligncenter alignright alignjustify bullist numlist outdent indent removeformat specilchar fullscreen',
-          content_style:
-            'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
-        }}
-      />
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Button style={{ margin: '10px 0' }} variant="primary" onClick={log}>
-          Apply
-        </Button>
-      </div>
+      <style>{`
+        #bpl-wp-${randomId}editor{
+          border:none !important;
+        }
+        #bpl-wp-${randomId}editor:focus{
+          border:none !important;
+          outline: none !important;
+          box-shadow:none !important;
+        }
+      `}</style>
+      <textarea style={{ width: "100%" }} id={`bpl-wp-${randomId}editor`} className='bpl-wp-editor' ></textarea>
     </div>
-  );
-};
+  )
+}
