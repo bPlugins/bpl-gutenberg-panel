@@ -27,9 +27,6 @@ import './style.scss'
 import { updateData } from './utils/helper/helper';
 export { AdvBackground, AdvOverlay, BBoxControl, BButtonGroup, BGradient, BMultiShadowControl, BorderControl, BUnitControl, CustomCodeEditor, Device, DynamicTag, Label, MediaArea, PanelAlign, PanelColorControl, PanelColorPicker, PanelGradientPicker, PanelRepeater, PanelSingleShadow, RangeUnitControl, SortableProvider, Tab, TabPanel, DualColorControl };
 
-// export * as getCss from "./utils/getCss/getCss"
-// export * as helper from "./utils/helper/helper"
-
 export const helper = {
   updateData
 }
