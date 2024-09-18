@@ -6,7 +6,7 @@ import {
 import { produce } from "immer";
 import { Fragment, useState } from "react";
 import { AdvBackground } from "../AdvBackground/AdvBackground";
-import { advBgOptions } from "../utils/options";
+import { advBgOptions } from "../../utils/options";
 
 const blendOptions = [
   { label: "Normal", value: "normal" },

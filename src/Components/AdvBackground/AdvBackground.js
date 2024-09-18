@@ -13,7 +13,7 @@ import {
   imgRepeatOptions,
   imgSizeOptions,
   unitOptions,
-} from "../utils/options";
+} from "../../utils/options";
 import { BGradient } from "../BGradient/BGradient";
 import { Device } from "../Device/Device";
 import {Label} from "../Label/Label";

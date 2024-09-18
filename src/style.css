@@ -1,9 +1,7 @@
-$primaryColor: #4527a4;
-
 .bPlAdvPanelBody,
 .bPlPopoverContent {
   .components-range-control {
-    .components-base-control__label { 
+    .components-base-control__label {
       font-size: 13px !important;
       text-transform: capitalize !important;
       margin-bottom: 0 !important;
@@ -12,18 +10,17 @@ $primaryColor: #4527a4;
     .components-range-control__wrapper {
       .components-range-control__track,
       .components-range-control__thumb-wrapper span {
-        background: $primaryColor !important;
+        background: #4527a4 !important;
       }
     }
   }
 }
-.bPlLabel 
-.components-unit-control-wrapper label,
+.bPlLabel .components-unit-control-wrapper label,
 .components-input-control__label,
 .components-number-control label {
-  // font-size: 14px;
-  // font-style: italic;
-  // font-weight: 500;
+  /* font-size: 14px;
+  font-style: italic;
+  font-weight: 500; */
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;

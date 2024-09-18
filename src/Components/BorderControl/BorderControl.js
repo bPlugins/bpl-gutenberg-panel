@@ -16,7 +16,7 @@ import {
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import {Label} from "../Label/Label";
-import { borderStyles, emUnit, perUnit, pxUnit, remUnit, sides } from "../utils/options";
+import { borderStyles, emUnit, perUnit, pxUnit, remUnit, sides } from "../../utils/options";
 import { PanelColorPicker } from "../PanelColorPicker/PanelColorPicker";
 
 export const BorderControl = (props) => {

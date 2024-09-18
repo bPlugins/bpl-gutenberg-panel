@@ -1,6 +1,4 @@
-:root {
-  --primary-color: #4527a4;
-}
+
 
 /* Dropdown */
 .bPlDropdown .dashicon {
@@ -64,13 +62,13 @@ svg {
 }
 
 .itemAction .duplicateItem {
-  background-color: var(--primary-color);
+  background-color: #4527a4;
 }
 
 /* Add Items */
 .addItem {
   text-align: center;
-  background: var(--primary-color);
+  background: #4527a4;
 }
 
 .addItem > button {
